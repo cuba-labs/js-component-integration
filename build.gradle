@@ -17,7 +17,6 @@ buildscript {
 
 def globalModule = project(':app-global')
 def coreModule = project(':app-core')
-def guiModule = project(':app-gui')
 def webModule = project(':app-web')
 
 def servletApi = 'javax.servlet:javax.servlet-api:3.1.0'
@@ -47,7 +46,7 @@ dependencies {
 
 def hsql = 'org.hsqldb:hsqldb:2.4.1'
 
-configure([globalModule, coreModule, guiModule, webModule]) {
+configure([globalModule, coreModule, webModule]) {
     apply(plugin: 'java')
     apply(plugin: 'maven')
     apply(plugin: 'idea')
@@ -127,18 +126,6 @@ configure(coreModule) {
     }
 }
 
-configure(guiModule) {
-    dependencies {
-        compile(globalModule)
-
-    }
-
-    task deployConf(type: Copy) {
-        from file('src')
-        include "com/company/sample/**"
-        into "$cuba.tomcat.dir/conf/app"
-    }
-}
 
 configure(webModule) {
     configurations {
@@ -147,7 +134,7 @@ configure(webModule) {
 
     dependencies {
         provided(servletApi)
-        compile(guiModule)
+        compile(globalModule)
 
     }
     
