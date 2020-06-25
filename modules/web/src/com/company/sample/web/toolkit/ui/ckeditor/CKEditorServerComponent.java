@@ -1,9 +1,11 @@
 package com.company.sample.web.toolkit.ui.ckeditor;
 
+import com.haulmont.cuba.web.widgets.WebJarResource;
 import com.vaadin.annotations.StyleSheet;
 import com.vaadin.ui.AbstractJavaScriptComponent;
 import com.vaadin.annotations.JavaScript;
 
+@WebJarResource({"jquery:jquery.min.js"})
 @JavaScript({
         "ckeditor-connector.js",
         "vaadin://resources/ckeditor/ckeditor.js",
