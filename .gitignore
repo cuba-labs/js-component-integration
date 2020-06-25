@@ -6,5 +6,6 @@
 build/*
 deploy/*
 modules/*/build/*
+.idea/*
 out
 test-run
