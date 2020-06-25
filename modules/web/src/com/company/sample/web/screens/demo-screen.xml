@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caption"
+        messagesPack="com.company.sample.web.screens">
+    <layout>
+        <vbox id="mainBox" spacing="true">
+            <vbox id="editorBox"/>
+
+            <hbox spacing="true">
+                <button id="showValueBtn" caption="Show Value"/>
+                <button id="setValueBtn" caption="Set Value"/>
+            </hbox>
+        </vbox>
+    </layout>
+</window>
