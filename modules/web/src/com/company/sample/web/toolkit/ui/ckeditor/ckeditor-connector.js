@@ -1,4 +1,4 @@
-com_company_sample_web_toolkit_ui_ckeditor_CKEditorServerComponent = function() {
+com_company_sample_web_toolkit_ui_ckeditor_CKEditor = function() {
     var connector = this;
     var element = connector.getElement();
     $(element).html("<textarea/>");

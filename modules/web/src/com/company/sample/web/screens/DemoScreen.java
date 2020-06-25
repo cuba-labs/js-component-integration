@@ -1,7 +1,8 @@
 package com.company.sample.web.screens;
 
-import com.company.sample.web.toolkit.ui.ckeditor.CKEditorServerComponent;
+import com.company.sample.web.toolkit.ui.ckeditor.CKEditor;
 import com.haulmont.cuba.gui.Notifications;
+import com.haulmont.cuba.gui.Notifications.NotificationType;
 import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.ContentMode;
 import com.haulmont.cuba.gui.components.VBoxLayout;
@@ -23,11 +24,19 @@ public class DemoScreen extends Screen {
     @Inject
     private Notifications notifications;
 
-    private CKEditorServerComponent ckEditor;
+    private CKEditor ckEditor;
 
     @Subscribe
     public void onInit(InitEvent event) {
-        ckEditor = new CKEditorServerComponent();
+        ckEditor = new CKEditor();
+        ckEditor.addValueChangeListener(valueChangeEvent ->
+                notifications.create()
+                        .withCaption("ValueChange Event, User originated: " + valueChangeEvent.isUserOriginated())
+                        .withDescription(valueChangeEvent.getValue())
+                        .withContentMode(ContentMode.HTML)
+                        .withType(NotificationType.TRAY)
+                        .show());
+
         editorBox.unwrap(AbstractOrderedLayout.class).addComponent(ckEditor, 0);
     }
 
